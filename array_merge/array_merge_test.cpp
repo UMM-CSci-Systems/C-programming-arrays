@@ -1,31 +1,26 @@
-#include <stdarg.h>
-#include <setjmp.h>
-#include <stdlib.h>
+#include <gtest/gtest.h>
 
-#include "../include/cmockery.h"
 #include "array_merge.h"
 
-bool arrays_match(int size, int a[], int b[]) {
+void arrays_match(int size, int a[], int b[]) {
   int i;
 
   for (i=0; i<size; ++i) {
-    assert_int_equal(a[i], b[i]);
+    ASSERT_EQ(b[i], a[i]);
   }
-
-  return true;
 }
 
-void test_empty_list() {
+TEST(ArrayMerge, Handle_empty_list) {
   int* a[] = { };
   int sizes[] = { };
   int expected[] = { 0 };
   int* result;
 
   result = array_merge(0, sizes,  a);
-  assert_true(arrays_match(1, result, expected));
+  arrays_match(1, result, expected);
 }
 
-void test_singleton_list() {
+TEST(ArrayMerge, Handle_singleton_list) {
   int num_arrays = 1;
   int sizes[] = { 1 };
   int a0[] = { 5 };
@@ -34,10 +29,10 @@ void test_singleton_list() {
   int* result;
 
   result = array_merge(num_arrays, sizes, a);
-  assert_true(arrays_match(2, result, expected));
+  arrays_match(2, result, expected);
 }
 
-void test_one_longer_list() {
+TEST(ArrayMerge, Handle_one_longer_list) {
   int num_arrays = 1;
   int sizes[] = { 10 };
   int a0[] = { 3, 2, 0, 5, 8, 9, 6, 3, 2, 0 };
@@ -46,10 +41,10 @@ void test_one_longer_list() {
   int* result;
 
   result = array_merge(num_arrays, sizes, a);
-  assert_true(arrays_match(8, result, expected));
+  arrays_match(8, result, expected);
 }
 
-void test_multiple_copies_of_longer_list() {
+TEST(ArrayMerge, Handle_multiple_copies_of_longer_list) {
   int num_arrays = 10;
   int sizes[] = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
   int a0[] = { 3, 2, 0, 5, 8, 9, 6, 3, 2, 0 };
@@ -58,10 +53,10 @@ void test_multiple_copies_of_longer_list() {
   int* result;
 
   result = array_merge(num_arrays, sizes, a);
-  assert_true(arrays_match(8, result, expected));
+  arrays_match(8, result, expected);
 }
 
-void test_multiple_copies_of_longer_list_different_orders() {
+TEST(ArrayMerge, Handle_multiple_copies_of_longer_list_different_orders) {
   int num_arrays = 9;
   int sizes[] = { 10, 10, 10, 10, 10, 10, 10, 10, 10 };
   int a0[] = { 3, 2, 0, 5, 8, 9, 6, 3, 2, 0 };
@@ -72,10 +67,10 @@ void test_multiple_copies_of_longer_list_different_orders() {
   int* result;
 
   result = array_merge(num_arrays, sizes, a);
-  assert_true(arrays_match(8, result, expected));
+  arrays_match(8, result, expected);
 }
 
-void test_different_sizes() {
+TEST(ArrayMerge, Handle_different_sizes) {
   int num_arrays = 11;
   int sizes[num_arrays];
   int* a[num_arrays];
@@ -85,17 +80,17 @@ void test_different_sizes() {
 
   for (i=0; i<num_arrays; ++i) {
     sizes[i] = i;
-    a[i] = calloc(i, sizeof(int));
+    a[i] = (int*) calloc(i, sizeof(int));
     for (j=0; j<i; ++j) {
       a[i][j] = j;
     }
   }
 
   result = array_merge(num_arrays, sizes, a);
-  assert_true(arrays_match(11, result, expected));
+  arrays_match(11, result, expected);
 }
 
-void test_different_sizes_reversed() {
+TEST(ArrayMerge, Handle_different_sizes_reversed) {
   int num_arrays = 11;
   int sizes[num_arrays];
   int* a[num_arrays];
@@ -105,25 +100,17 @@ void test_different_sizes_reversed() {
 
   for (i=num_arrays-1; i>=0; --i) {
     sizes[i] = i;
-    a[i] = calloc(i, sizeof(int));
+    a[i] = (int*) calloc(i, sizeof(int));
     for (j=0; j<i; ++j) {
       a[i][j] = j;
     }
   }
 
   result = array_merge(num_arrays, sizes, a);
-  assert_true(arrays_match(11, result, expected));
+  arrays_match(11, result, expected);
 }
 
 int main(int argc, char* argv[]) {
-  UnitTest tests[] = {
-    unit_test(test_empty_list),
-    unit_test(test_singleton_list),
-    unit_test(test_one_longer_list),
-    unit_test(test_multiple_copies_of_longer_list),
-    unit_test(test_multiple_copies_of_longer_list_different_orders),
-    unit_test(test_different_sizes),
-    unit_test(test_different_sizes_reversed),
-  };
-  return run_tests(tests);
+  ::testing::InitGoogleTest(&argc, argv);
+  return RUN_ALL_TESTS();
 }

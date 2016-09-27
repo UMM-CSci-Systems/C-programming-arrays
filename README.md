@@ -78,9 +78,6 @@ The basic structure for each project is (for an imaginary project
         want to include them in the tests.
 -   `foo.c`, which includes the initial stub (or an incorrect version)
     of the program you're working with in that part.
--   `main.c`, which gives you a "main" function that you can use to
-    run your code separate from the test code. You don't have to ever
-    do this, but you might find it useful in debugging.
 -   `foo_test.cpp`, which is the test file we wrote using `gtest`. The
     `.cpp` ending is because this is actually a C++ file not a strict
     C file. That will affect how you compile the test code, but you
@@ -88,16 +85,6 @@ The basic structure for each project is (for an imaginary project
 
 Your job then is typically to complete or fix `foo.c`, which provides
 the implementation of the function listed in `foo.h`.
-
-To compile the `main` use the following:
-
-```bash
-gcc -Wall -g -o foo foo.c main.c
-```
-
-(where you replace `foo` with the appropriate name for the project 
-you're working on). If all goes well, that should generate an executable 
-`foo` that you can run with `./foo`.
 
 To compile the test code use the following:
 
