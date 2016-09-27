@@ -46,9 +46,9 @@ Several groups had off-by-one errors where they weren't allocating
     where the null terminator would need to be, but which we never
     allocated space for.
 
-A number of groups had a subtle mistake where they 
+A number of groups had a subtle mistake where they went through something like the following sequence of steps:
 
-1. Dynamically allocated an array that was potentially empty: `int *a = calloc(n, sizeof(int));`. 
+1. Dynamically allocated an array that was potentially empty (because _n=0_): `int *a = calloc(n, sizeof(int));`. 
 1. Copied some data into that array using a loop that (correctly) did nothing if *n=0*. 
 1. Accessed the first item in the array, which might not actually be there, e.g., `int i = a[0];`. 
 1. Protected the remainder of the code (through an `if` or loop with appropriate bounds) so that the value taken from the array was never *used* if n=0.
@@ -85,11 +85,6 @@ Use functions to break things up! Many of the submissions have
     three loops in their `array_merge` function, with several people
     getting as high as 6. I'd have a look at that if I were you.
 
-On a related note, *many* people have their vowel check in
-        `disemvowel` as a huge long chain of `||` statements. Pull that
-        stuff out into a named function, *especially* if you end up
-        repeating it!
-
 # Style and clarity: Odds and ends
 
 You should remove printing code from "production" code (i.e.,
@@ -121,6 +116,3 @@ Several people did a variant of linear search to see if an item was
     sort it if it isn't) to simplify this (and speed it up, but the
     simplicity is arguably the bigger issue).
     
----
-
-These notes were started by Vincent Borchardt, 16 Aug 2012
