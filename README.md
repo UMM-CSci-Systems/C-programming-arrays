@@ -1,11 +1,11 @@
 * [Background](#background)
- * [Testing and the CMockery framework](#testing-and-the-cmockery-framework)
- * [Fixing memory problems](#fixing-memory-problems)
- * [Getting started](#getting-started)
+  * [Testing and the Google Test framework](#testing-and-the-google-test-framework)
+  * [Fixing memory problems](#fixing-memory-problems)
+  * [Getting started](#getting-started)
 * [The problems](#the-problems)
- * [Mergesort](#mergesort)
- * [Array merge](#array-merge)
-
+  * [Mergesort](#mergesort)
+  * [Array merge](#array-merge)
+* [Final Words](#final-words)
 ---
 
 # Background
@@ -14,7 +14,7 @@ This lab is a collection of several C programming exercises with an
 emphasis on arrays, pointers, and memory management.
 
 For more information (including information on how to use ```valgrind```), see
-the [C programming pre-lab](https://github.com/UMM-CSci-Systems/C-programming-pre-lab).
+the [C programming pre-lab assignment](https://classroom.github.com/a/304sWPd4).
 
 ## Testing and the Google Test framework
 
@@ -40,8 +40,8 @@ as it's entirely possible to pass the tests but still have substantial memory
 management problems. You could, for example, have an illegal memory access
 that passes the tests through happenstance, because the right value happens
 to be in the necessary location. Or you could have memory leaks because you
-never free up any of the memory you allocate while solving the problem in a
-manner that is otherwise entirely correct. This is where `valgrind` is extremely
+never free up any of the memory you allocated while solving the problem-- even if your 
+solution is otherwise entirely correct. This is where `valgrind` is extremely
 helpful, as it will identify these kinds
 of memory problems even if the tests pass. 
 
@@ -54,13 +54,13 @@ and then returned to the test code, then the fix is _in the test code_. In gener
 we don't encourage you to fiddle with the 
 test code (you could always just change the test code to say everything 
 passes!), but if the memory leaks to the test code, then that's where the 
-fix has to be made.
+fix has to be made (and you should do so).
 
 ## Getting started
 
-You should first fork this repository to get the
-starter code, and remember to add any collaborators right away. You should
-then clone the repository to whatever machine you're going to work on.
+You should clone the repository made when you accepted the github assignment by following the link on canvas.
+Make sure your fellow group members choose the proper group when they accept the assignment too.
+
 
 There are several directories here, one for each project. 
 We would recommend doing them in the order listed below; there's no 
@@ -204,3 +204,10 @@ You might also find your sorting algorithm from above useful in sorting
 your results. With a little care, you can put the all the unique values in an unsorted
 array, and then ask your sorting algorithm to sort the desired bit of
 the array without messing with that important first element.
+
+# Final Words
+
+Be sure that 
+* [ ] You follow our instructions
+* [ ] Your canvas group matches your github classroom group
+* [ ] You submit your repoistory URL to canvas (if your canvas groups are set up correctly this will only need to be done once)
