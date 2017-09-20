@@ -201,7 +201,7 @@ unique values is much smaller than the number of entries in `values`;
 your solution should make a point of freeing up any unused memory.
 
 You might also find your sorting algorithm from above useful in sorting
-your results. With a little care, you can put the all the unique values in an unsorted
+your results. With a little care, you can put all the unique values in an unsorted
 array, and then ask your sorting algorithm to sort the desired bit of
 the array without messing with that important first element.
 
