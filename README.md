@@ -1,10 +1,14 @@
-* [Background](#background)
- * [Testing and the CMockery framework](#testing-and-the-cmockery-framework)
- * [Fixing memory problems](#fixing-memory-problems)
- * [Getting started](#getting-started)
-* [The problems](#the-problems)
- * [Mergesort](#mergesort)
- * [Array merge](#array-merge)
+<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Background](#background)
+	- [Testing and the Google Test framework](#testing-and-the-google-test-framework)
+	- [Fixing memory problems](#fixing-memory-problems)
+	- [Getting started](#getting-started)
+- [The problems](#the-problems)
+	- [Mergesort](#mergesort)
+	- [Array merge](#array-merge)
+
+<!-- /TOC -->
 
 ---
 
@@ -19,18 +23,18 @@ the [C programming pre-lab](https://github.com/UMM-CSci-Systems/C-programming-pr
 ## Testing and the Google Test framework
 
 Each of these exercises comes with a set of tests implemented using [the
-Google Test framework for C](https://github.com/google/googletest), aka 
+Google Test framework for C](https://github.com/google/googletest), aka
 `gtest`. You won't have to learn anything about `gtest`, but you
 will need to be able to compile and run the tests that we provide.
 
 We think the tests are pretty reasonable, but make *no* promises that
 they are in any way complete. Obviously you want your code to pass at
 least these tests, but you shouldn't assume that passing these tests
-guarantees any kind of correctness. You're welcome to read the tests 
+guarantees any kind of correctness. You're welcome to read the tests
 and extend them if you'd like. You may even need to make changes to the
-test code to handle memory leaks 
+test code to handle memory leaks
 [(see "fixing memory problems" below)](#fixing-memory-problems).
-Do be careful to not remove or weaken the tests, though; at a minimum 
+Do be careful to not remove or weaken the tests, though; at a minimum
 you definitely want to be able to pass the tests as given.
 
 ## Fixing memory problems
@@ -43,30 +47,26 @@ to be in the necessary location. Or you could have memory leaks because you
 never free up any of the memory you allocate while solving the problem in a
 manner that is otherwise entirely correct. This is where `valgrind` is extremely
 helpful, as it will identify these kinds
-of memory problems even if the tests pass. 
+of memory problems even if the tests pass.
 
-:bangbang: One non-obvious, but important, place to look for memory leaks is 
+:bangbang: One non-obvious, but important, place to look for memory leaks is
 in the test code. If the test code calls some function `f()` that returns an
 array or string that is allocated somewhere in `f` (or a function `f` calls),
 then that memory is lost if the test code doesn't free up that returned array.
 So if `valgrind` says there's a leak where some memory is allocated in a function
-and then returned to the test code, then the fix is _in the test code_. In general 
-we don't encourage you to fiddle with the 
-test code (you could always just change the test code to say everything 
-passes!), but if the memory leaks to the test code, then that's where the 
+and then returned to the test code, then the fix is _in the test code_. In general
+we don't encourage you to fiddle with the
+test code (you could always just change the test code to say everything
+passes!), but if the memory leaks to the test code, then that's where the
 fix has to be made.
 
 ## Getting started
 
-You should first fork this repository to get the
-starter code, and remember to add any collaborators right away. You should
-then clone the repository to whatever machine you're going to work on.
-
-There are several directories here, one for each project. 
-We would recommend doing them in the order listed below; there's no 
-overwhelming reason that you need to do them in any particular order, 
+There are several directories here, one for each project.
+We would recommend doing them in the order listed below; there's no
+overwhelming reason that you need to do them in any particular order,
 however, and it would be far better to move on to the
-next one rather than get buried in one and not make any progress.
+next one rather than get stuck in one and not make any progress.
 
 The basic structure for each project is (for an imaginary project
 `foo`):
@@ -88,19 +88,19 @@ the implementation of the function listed in `foo.h`.
 
 To compile the test code use the following:
 
-```bash 
-g++ -Wall -g -o foo_test foo.c foo_test.cpp -lgtest 
+```bash
+g++ -Wall -g -o foo_test foo.c foo_test.cpp -lgtest
 ```
 
-_Notice that this uses `g++` instead of `gcc`. This because the `gtest`
+_Notice that this uses `g++` instead of `gcc`._ This because the `gtest`
 is technically a C++ library, but it also works for "plain" C code, which
-is all we need it for here. The `-g` flag isn't strictly necessary; it 
-causes a variety of useful debugging information to be included in 
-the executable, however, which can be *extremely* helpful when using 
-tools like `valgrind` or the `gdb` debugger. If you don't include it, 
-for example, then those tools won't be able to report accurate or useful 
+is all we need it for here. The `-g` flag isn't strictly necessary; it
+causes a variety of useful debugging information to be included in
+the executable, however, which can be *extremely* helpful when using
+tools like `valgrind` or the `gdb` debugger. If you don't include it,
+for example, then those tools won't be able to report accurate or useful
 line numbers or function names. The `-lgtest` tells the compiler to include
-the `gtest` library (that's the `-l` part) when generating the executable. 
+the `gtest` library (that's the `-l` part) when generating the executable.
 
 ---
 
@@ -108,9 +108,9 @@ the `gtest` library (that's the `-l` part) when generating the executable.
 
 :bangbang: Remember: For each problem you should at a minimum
 
-* Pass our tests, and 
+* Pass our tests, and
 * Have _no_ memory leaks, as confirmed by `valgrind`.
-* Remove any print statements or other code that you used to debug your code before you turn it in.
+* Remove any print statements, comments, or other code that you used to debug your code before you turn it in.
 
 Also, please don't lose your brains and forget good programming practices just because you're working in a new language. C can be quite difficult to read under the best of circumstances, and using miserable names like `res`, `res2`, and `res3` doesn't help. *Use functions* to break up complicated bits of logic; it's really not fun when a group turns in a solution that is one huge function, especially when there are several instances of repeated logic.
 
@@ -136,7 +136,7 @@ void mergesort(int size, int values[]);
 
 This is a
 _destructive_ sorting operation, i.e., it should alter the array that it's
-given by rearranging the elements in that that array. Note that since C 
+given by rearranging the elements in that that array. Note that since C
 doesn't know how large arrays are, we pass in
 the size as an argument.
 
@@ -150,15 +150,24 @@ them easier to grade. (Having to figure out some crazy, unexpected
 approach is much more time consuming than reading a "standard"
 solution.)
 
-Common approaches to Mergesort require allocating temporary arrays; you
+Common approaches to Mergesort require allocating temporary arrays
+(e.g., [this allocation in the Java code](https://gist.github.umn.edu/mcphee/83e9818b21ef9cb3cde4#file-mergesort-java-L29)); you
 should make a point of freeing these up when they're no longer needed,
 as you certainly wouldn't want a common operation like sorting to leak a
 bunch of memory every time it's called. Again, `valgrind` should be your
 friend.
 
+:bangbang: C has "fancied up" over the years so you can dynamically allocate
+arrays without using `malloc` or `calloc`. For this lab **do not do that**.
+Make sure that in your recursive calls to `mergesort` that you use `calloc`
+(or `malloc` if you prefer) to allocate the necessary temporary arrays.
+This arguably overcomplicates the problem, but the point of this exercise
+is to make sure you understand the allocation and freeing of memory its
+important that you use `malloc` and `free`. Thanks.
+
 ## Array merge
 
-Your task here is to implement 
+Your task here is to implement
 
 ```C
 int* array_merge(int num_arrays, int* sizes, int** values);
