@@ -86,7 +86,7 @@ the implementation of the function listed in `foo.h`.
 To compile the test code use the following:
 
 ```bash
-g++ -Wall -g -o foo_test foo.c foo_test.cpp -lgtest
+g++ -Wall -g -o foo_test foo.c foo_test.cpp -lgtest -pthread -std=c++0x
 ```
 
 _Notice that this uses `g++` instead of `gcc`._ This because the `gtest`
