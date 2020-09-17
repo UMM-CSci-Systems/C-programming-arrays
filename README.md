@@ -1,17 +1,3 @@
-<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-- [Background](#background)
-	- [Testing and the Google Test framework](#testing-and-the-google-test-framework)
-	- [Fixing memory problems](#fixing-memory-problems)
-	- [Getting started](#getting-started)
-- [The problems](#the-problems)
-	- [Mergesort](#mergesort)
-	- [Array merge](#array-merge)
-
-<!-- /TOC -->
-
----
-
 # Background
 
 This lab is a collection of several C programming exercises with an
@@ -19,6 +5,17 @@ emphasis on arrays, pointers, and memory management.
 
 For more information (including information on how to use ```valgrind```), see
 the [C programming pre-lab assignment](https://classroom.github.com/a/304sWPd4).
+
+* [Background](#background)
+  * [Testing and the Google Test framework](#testing-and-the-google-test-framework)
+  * [Fixing memory problems](#fixing-memory-problems)
+  * [Getting started](#getting-started)
+  * [The problems](#the-problems)
+    * [Mergesort](#mergesort)
+    * [Array merge](#array-merge)
+  * [Final Words](#final-words)
+
+---
 
 ## Testing and the Google Test framework
 
@@ -71,17 +68,17 @@ next one rather than get stuck in one and not make any progress.
 The basic structure for each project is (for an imaginary project
 `foo`):
 
--   `foo.h`, which specifies the name, arguments, and return
-    type of the function you're supposed to write.
-    -   In every case we wrote one or more helper functions, but these
-        don't have to be included in the `.h` file unless you
-        want to include them in the tests.
--   `foo.c`, which includes the initial stub (or an incorrect version)
-    of the program you're working with in that part.
--   `foo_test.cpp`, which is the test file we wrote using `gtest`. The
-    `.cpp` ending is because this is actually a C++ file not a strict
-    C file. That will affect how you compile the test code, but you
-    won't have to know/learn anything about C++ for this lab.
+* `foo.h`, which specifies the name, arguments, and return
+  type of the function you're supposed to write.
+  * In every case we wrote one or more helper functions, but these
+    don't have to be included in the `.h` file unless you
+    want to include them in the tests.
+* `foo.c`, which includes the initial stub (or an incorrect version)
+  of the program you're working with in that part.
+* `foo_test.cpp`, which is the test file we wrote using `gtest`. The
+  `.cpp` ending is because this is actually a C++ file not a strict
+  C file. That will affect how you compile the test code, but you
+  won't have to know/learn anything about C++ for this lab.
 
 Your job then is typically to complete or fix `foo.c`, which provides
 the implementation of the function listed in `foo.h`.
@@ -104,7 +101,7 @@ the `gtest` library (that's the `-l` part) when generating the executable.
 
 ---
 
-# The problems
+## The problems
 
 :bangbang: Remember: For each problem you should at a minimum
 
@@ -117,15 +114,20 @@ Also, please don't lose your brains and forget good programming practices just b
 Some things to watch our for:
 
 * In the past there has been strong inverse correlation between length
-and correctness on these problem. If you find yourself wandering off into 2
-or (especially!) 3 pages of code for any of these, you've likely lost the plot
-and should probably ask for some help.
-* Make sure you initialize all variables (including variables used to index arrays in loops). C won't give you an error if you fail to initialize something, and sometimes you can get lucky and your tests will accidentally pass because, at least that one time, you happened to get the "right" initial value. That doesn't mean your code is correct, though.
-* Make sure you allocate space for the null terminator `\0` when allocating space for strings.
+  and correctness on these problem. If you find yourself wandering off into 2
+  or more pages of code for any of these, you've likely lost the plot
+  and should probably ask for some help.
+* Make sure you initialize all variables (including variables used to index arrays in
+  loops). C won't give you an error if you fail to initialize something, and
+  sometimes you can get lucky and your tests will accidentally pass because, at least
+  that one time, you happened to get the "right" initial value. That doesn't mean
+  your code is correct, though.
+* Make sure you allocate space for the null terminator `\0` when allocating 
+  space for strings.
 
 There are more comprehensive tips and suggestions in `Tips_and_suggestions.md` in the repository.
 
-## Mergesort
+### Mergesort
 
 Your task here is to implement a well known sorting algorithm in C,
 e.g.,
@@ -161,11 +163,11 @@ friend.
 arrays without using `malloc` or `calloc`. For this lab **do not do that**.
 Make sure that in your recursive calls to `mergesort` that you use `calloc`
 (or `malloc` if you prefer) to allocate the necessary temporary arrays.
-This arguably overcomplicates the problem, but the point of this exercise
+This arguably over-complicates the problem, but the point of this exercise
 is to make sure you understand the allocation and freeing of memory its
 important that you use `malloc` and `free`. Thanks.
 
-## Array merge
+### Array merge
 
 Your task here is to implement
 
@@ -197,11 +199,11 @@ example, there were 3 unique values (5, 8, and 9), then the result array
 would contain [3, 5, 8, 9]. The caller can then use the first element of
 the array to determine how long the array actually is.
 
-As a more complete example, consider the following input:
+As a fuller example, consider the following input:
 
--   `num_arrays = 3`
--   `sizes = [4, 2, 5]`
--   `values = [[3, 2, 0, 5], [8, 9], [6, 3, 2, 0, 5]]`
+* `num_arrays = 3`
+* `sizes = [4, 2, 5]`
+* `values = [[3, 2, 0, 5], [8, 9], [6, 3, 2, 0, 5]]`
 
 Then the result should be `[7, 0, 2, 3, 5, 6, 8, 9]`.
 
@@ -214,9 +216,10 @@ your results. With a little care, you can put all the unique values in an unsort
 array, and then ask your sorting algorithm to sort the desired bit of
 the array without messing with that important first element.
 
-# Final Words
+## Final Words
 
-Be sure that
+Be sure that:
+
 * [ ] You follow our instructions
 * [ ] Your canvas group matches your github classroom group
-* [ ] You submit your repoistory URL to canvas (if your canvas groups are set up correctly this will only need to be done once)
+* [ ] You submit your repository URL to canvas (if your canvas groups are set up correctly this will only need to be done once)
