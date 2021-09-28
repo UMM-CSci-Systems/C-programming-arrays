@@ -67,14 +67,14 @@ next one rather than get stuck in one and not make any progress.
 The basic structure for each project is (for an imaginary project
 `foo`):
 
-* `foo.h`, which specifies the name, arguments, and return
+- `foo.h`, which specifies the name, arguments, and return
   type of the function you're supposed to write.
-  * In every case we wrote one or more helper functions, but these
+  - In every case we wrote one or more helper functions, but these
     don't have to be included in the `.h` file unless you
     want to include them in the tests.
-* `foo.c`, which includes the initial stub (or an incorrect version)
+- `foo.c`, which includes the initial stub (or an incorrect version)
   of the program you're working with in that part.
-* `foo_test.cpp`, which is the test file we wrote using `gtest`. The
+- `foo_test.cpp`, which is the test file we wrote using `gtest`. The
   `.cpp` ending is because this is actually a C++ file not a strict
   C file. That will affect how you compile the test code, but you
   won't have to know/learn anything about C++ for this lab.
@@ -104,19 +104,19 @@ the `gtest` library (that's the `-l` part) when generating the executable.
 
 :bangbang: Remember: For each problem you should at a minimum
 
-* Pass our tests, and
-* Have _no_ memory leaks, as confirmed by `valgrind`.
-* Remove any print statements, comments, or other code that you used to debug your code before you turn it in.
+- Pass our tests, and
+- Have _no_ memory leaks, as confirmed by `valgrind`.
+- Remove any print statements, comments, or other code that you used to debug your code before you turn it in.
 
 Also, please don't lose your brains and forget good programming practices just because you're working in a new language. C can be quite difficult to read under the best of circumstances, and using miserable names like `res`, `res2`, and `res3` doesn't help. *Use functions* to break up complicated bits of logic; it's really not fun when a group turns in a solution that is one huge function, especially when there are several instances of repeated logic.
 
 Some things to watch our for:
 
-* In the past there has been strong inverse correlation between length
+- In the past there has been strong inverse correlation between length
   and correctness on these problem. If you find yourself wandering off into 2
   or more pages of code for any of these, you've likely lost the plot
   and should probably ask for some help.
-* Make sure you initialize all variables (including variables used to index arrays in
+- Make sure you initialize all variables (including variables used to index arrays in
   loops). C won't give you an error if you fail to initialize something, and
   sometimes you can get lucky and your tests will accidentally pass because, at least
   that one time, you happened to get the "right" initial value. That doesn't mean
@@ -199,9 +199,9 @@ the array to determine how long the array actually is.
 
 As a fuller example, consider the following input:
 
-* `num_arrays = 3`
-* `sizes = [4, 2, 5]`
-* `values = [[3, 2, 0, 5], [8, 9], [6, 3, 2, 0, 5]]`
+- `num_arrays = 3`
+- `sizes = [4, 2, 5]`
+- `values = [[3, 2, 0, 5], [8, 9], [6, 3, 2, 0, 5]]`
 
 Then the result should be `[7, 0, 2, 3, 5, 6, 8, 9]`.
 
@@ -223,6 +223,6 @@ in `gcc/g++` calls.
 
 Be sure that:
 
-* [ ] You follow our instructions
-* [ ] Your canvas group matches your github classroom group
-* [ ] You submit your repository URL to canvas (if your canvas groups are set up correctly this will only need to be done once)
+- [ ] You follow our instructions
+- [ ] Your canvas group matches your github classroom group
+- [ ] You submit your repository URL to canvas (if your canvas groups are set up correctly this will only need to be done once)
