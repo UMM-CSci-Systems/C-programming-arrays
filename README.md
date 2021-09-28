@@ -1,4 +1,4 @@
-# Background
+# Background <!-- omit in toc -->
 
 This lab is a collection of several C programming exercises with an
 emphasis on arrays, pointers, and memory management.
@@ -6,14 +6,13 @@ emphasis on arrays, pointers, and memory management.
 For more information (including information on how to use ```valgrind```), see
 the [C programming pre-lab assignment](https://classroom.github.com/a/304sWPd4).
 
-* [Background](#background)
-  * [Testing and the Google Test framework](#testing-and-the-google-test-framework)
-  * [Fixing memory problems](#fixing-memory-problems)
-  * [Getting started](#getting-started)
-  * [The problems](#the-problems)
-    * [Mergesort](#mergesort)
-    * [Array merge](#array-merge)
-  * [Final Words](#final-words)
+- [Testing and the Google Test framework](#testing-and-the-google-test-framework)
+- [Fixing memory problems](#fixing-memory-problems)
+- [Getting started](#getting-started)
+- [The problems](#the-problems)
+  - [Mergesort](#mergesort)
+  - [Array merge](#array-merge)
+- [Final Words](#final-words)
 
 ---
 
@@ -60,9 +59,9 @@ fix has to be made (and you should do so).
 ## Getting started
 
 There are several directories here, one for each project.
-We would recommend doing them in the order listed below; there's no
-overwhelming reason that you need to do them in any particular order,
-however, and it would be far better to move on to the
+We would recommend doing them in the order listed below, especially
+since you can use your solution to the first one to help solve the
+second one. That said, it would be far better to move on to the
 next one rather than get stuck in one and not make any progress.
 
 The basic structure for each project is (for an imaginary project
@@ -122,8 +121,6 @@ Some things to watch our for:
   sometimes you can get lucky and your tests will accidentally pass because, at least
   that one time, you happened to get the "right" initial value. That doesn't mean
   your code is correct, though.
-* Make sure you allocate space for the null terminator `\0` when allocating 
-  space for strings.
 
 There are more comprehensive tips and suggestions in `Tips_and_suggestions.md` in the repository.
 
@@ -144,7 +141,7 @@ the size as an argument.
 
 To simplify the process, we've provided you with [Java implementations of
 Quicksort and
-Mergesort](https://github.umn.edu/gist/mcphee/83e9818b21ef9cb3cde4) that
+Mergesort](https://gist.github.com/NicMcPhee/426823d04c1d1a833d5f0979340e5b0a) that
 you can use as models. We strongly
 recommend you take advantage of these; doing so will help ensure
 that you focus on the C issues on these problems, and it'll make
@@ -153,14 +150,15 @@ approach is much more time consuming than reading a "standard"
 solution.)
 
 Common approaches to Mergesort require allocating temporary arrays
-(e.g., [this allocation in the Java code](https://gist.github.umn.edu/mcphee/83e9818b21ef9cb3cde4#file-mergesort-java-L29)); you
+(e.g., [this allocation in the Java code](https://gist.github.com/NicMcPhee/426823d04c1d1a833d5f0979340e5b0a#file-mergesort-java-L29)); you
 should make a point of freeing these up when they're no longer needed,
 as you certainly wouldn't want a common operation like sorting to leak a
 bunch of memory every time it's called. Again, `valgrind` should be your
 friend.
 
-:bangbang: C has "fancied up" over the years so you can dynamically allocate
-arrays without using `malloc` or `calloc`. For this lab **do not do that**.
+:bangbang: C does (now) support _dynamically_ allocate
+arrays for local use without using `malloc` or `calloc`.
+For this lab **do not do that**.
 Make sure that in your recursive calls to `mergesort` that you use `calloc`
 (or `malloc` if you prefer) to allocate the necessary temporary arrays.
 This arguably over-complicates the problem, but the point of this exercise
@@ -215,6 +213,11 @@ You might also find your sorting algorithm from above useful in sorting
 your results. With a little care, you can put all the unique values in an unsorted
 array, and then ask your sorting algorithm to sort the desired bit of
 the array without messing with that important first element.
+
+You can use references like `../mergesort/mergesort.h` or
+`../mergesort/mergesort.c` to access appropriate files in that part of
+the project, either in things like `#include` statements or
+in `gcc/g++` calls.
 
 ## Final Words
 
