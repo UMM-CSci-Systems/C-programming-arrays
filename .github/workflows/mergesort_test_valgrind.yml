@@ -1,13 +1,13 @@
 name: mergesort-test-valgrind
 
+# The `workflow_dispatch` lets us manually trigger this action
+# through the GitHub web interface. See
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+# for more details.
 on:
   push:
     paths:
-        - 'mergesort/**'
-  # This lets us manually trigger this action
-  # through the GitHub web interface. See
-  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
-  # for more details.
+      - 'mergesort/**'
   workflow_dispatch:
 
 jobs:

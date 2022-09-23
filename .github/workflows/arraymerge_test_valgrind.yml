@@ -1,16 +1,16 @@
 name: array-merge-test-valgrind
 
+# The `workflow_dispatch` lets us manually trigger this action
+# through the GitHub web interface. See
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+# for more details.
+# We probably want to re-run the `array_merge` checks if the
+# definition of `mergesort` changes since this depends on that.
 on:
   push:
     paths:
-        - 'array_merge/**'
-        # We probably want to re-run the checks if the definition of
-        # `mergesort` changes since this depends on that.
-        - 'mergesort/mergesort.[ch]'
-  # This lets us manually trigger this action
-  # through the GitHub web interface. See
-  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
-  # for more details.
+      - 'array_merge/**'
+      - 'mergesort/mergesort.[ch]'
   workflow_dispatch:
 
 jobs:
