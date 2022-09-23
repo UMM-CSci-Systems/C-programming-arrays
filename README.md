@@ -38,6 +38,15 @@ test code to handle memory leaks
 Do be careful to not remove or weaken the tests, though; at a minimum
 you definitely want to be able to pass the tests as given.
 
+:bangbang: Neither of the parts of this lab comes with a `main()` function.
+We could add one, but both of the target functions (`mergesort()` and
+`array_merge()`) are really "library" functions that don't make a
+lot of sense as functions that users would interact with directly. So
+we just have them called by the tests but don't provide a way for you
+to call them directly. If you want to create a `main.c` for either or
+both of the projects feel free to do so, but it's definitely not
+expected.
+
 ## Fixing memory problems
 
 Passing the tests is arguably just the first half of each of these problems,
