@@ -129,6 +129,12 @@ Some things to watch our for:
 
 There are more comprehensive tips and suggestions in `Tips_and_suggestions.md` in the repository.
 
+:bangbang: The Array Merge problem depends on the Mergesort problem, so you really
+should do Mergesort first. The GitHub Actions (that run the tests automatically and
+create things like the status badges) actually include `mergesort.c` when they
+compile the Array Merge code, so if `mergesort.c` is incomplete or otherwise
+broken that will cause the Array Merge tests to fail.
+
 ### Mergesort
 
 Your task here is to implement a well known sorting algorithm in C,
@@ -222,7 +228,22 @@ the array without messing with that important first element.
 You can use references like `../mergesort/mergesort.h` or
 `../mergesort/mergesort.c` to access appropriate files in that part of
 the project, either in things like `#include` statements or
-in `gcc/g++` calls.
+in `gcc/g++` calls. The command in the GitHub Actions to compile
+the Array Merge tess, for example, is:
+
+```text
+g++ -Wall -g -o array_merge_test ../mergesort/mergesort.c array_merge.c array_merge_test.cpp -lgtest -pthread -std=c++0x
+```
+
+Note that the `../mergesort/mergesort.c` in this command includes
+the Mergesort `.c` file in the list of files that will be compiled
+and linked together to form the `array_merge_test` executable.
+That has two major implications:
+
+- You *must* have a working `mergesort.c` in order to get the GitHub
+  Actions for Array Merge to compile successfully.
+- You *can* (and presumably should?) use the function `mergesort()` that
+  you define in the other part of the lab here in Array Merge.
 
 ## Final Words
 
