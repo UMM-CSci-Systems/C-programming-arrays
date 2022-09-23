@@ -1,17 +1,17 @@
 name: array-merge-gtest
 
-on: push
-  paths:
-    - 'array_merge/**'
-    # We probably want to re-run the checks if the definition of
-    # `mergesort` changes since this depends on that.
-    - 'mergesort/mergesort.[ch]'
-
-# This lets us manually trigger this action
-# through the GitHub web interface. See
-# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
-# for more details.
-on: workflow_dispatch
+on:
+  push:
+    paths:
+        - 'array_merge/**'
+        # We probably want to re-run the checks if the definition of
+        # `mergesort` changes since this depends on that.
+        - 'mergesort/mergesort.[ch]'
+  # This lets us manually trigger this action
+  # through the GitHub web interface. See
+  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+  # for more details.
+  workflow_dispatch:
 
 jobs:
   build:
