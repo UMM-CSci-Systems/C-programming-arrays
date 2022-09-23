@@ -1,8 +1,14 @@
 name: mergesort-gtest
 
-on: [push, pull_request]
-#    paths:
-#    - 'mergesort/**'
+on: push
+  paths:
+    - 'mergesort/**'
+
+# This lets us manually trigger this action
+# through the GitHub web interface. See
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+# for more details.
+on: workflow_dispatch
 
 jobs:
   build:
