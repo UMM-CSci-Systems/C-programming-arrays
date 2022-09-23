@@ -50,7 +50,7 @@ in the test code. If the test code calls some function `f()` that returns an
 array or string that is allocated somewhere in `f` (or a function `f` calls),
 then that memory is lost if the test code doesn't free up that returned array.
 So if `valgrind` says there's a leak where some memory is allocated in a function
-and then returned to the test code, then the fix is _in the test code_. In general
+and then returned to the test code, then the fix is *in the test code*. In general
 we don't encourage you to fiddle with the
 test code (you could always just change the test code to say everything
 passes!), but if the memory leaks to the test code, then that's where the
@@ -88,7 +88,7 @@ To compile the test code use the following:
 g++ -Wall -g -o foo_test foo.c foo_test.cpp -lgtest -pthread -std=c++0x
 ```
 
-_Notice that this uses `g++` instead of `gcc`._ This because the `gtest`
+*Notice that this uses `g++` instead of `gcc`.* This because the `gtest`
 is technically a C++ library, but it also works for "plain" C code, which
 is all we need it for here. The `-g` flag isn't strictly necessary; it
 causes a variety of useful debugging information to be included in
@@ -105,7 +105,7 @@ the `gtest` library (that's the `-l` part) when generating the executable.
 :bangbang: Remember: For each problem you should at a minimum
 
 - Pass our tests, and
-- Have _no_ memory leaks, as confirmed by `valgrind`.
+- Have *no* memory leaks, as confirmed by `valgrind`.
 - Remove any print statements, comments, or other code that you used to debug your code before you turn it in.
 
 Also, please don't lose your brains and forget good programming practices just because you're working in a new language. C can be quite difficult to read under the best of circumstances, and using miserable names like `res`, `res2`, and `res3` doesn't help. *Use functions* to break up complicated bits of logic; it's really not fun when a group turns in a solution that is one huge function, especially when there are several instances of repeated logic.
@@ -134,7 +134,7 @@ void mergesort(int size, int values[]);
 ```
 
 This is a
-_destructive_ sorting operation, i.e., it should alter the array that it's
+*destructive* sorting operation, i.e., it should alter the array that it's
 given by rearranging the elements in that that array. Note that since C
 doesn't know how large arrays are, we pass in
 the size as an argument.
@@ -156,7 +156,7 @@ as you certainly wouldn't want a common operation like sorting to leak a
 bunch of memory every time it's called. Again, `valgrind` should be your
 friend.
 
-:bangbang: C does (now) support _dynamically_ allocate
+:bangbang: C does (now) support *dynamically* allocate
 arrays for local use without using `malloc` or `calloc`.
 For this lab **do not do that**.
 Make sure that in your recursive calls to `mergesort` that you use `calloc`
@@ -183,10 +183,10 @@ is the length of the corresponding sub-array in `values`. If
 `sizes[3]==10`, for example, then `values[3]` will be an array of 10
 integers.
 
-_Note how inherently icky it is to have to pass all this bookkeeping
+*Note how inherently icky it is to have to pass all this bookkeeping
 information around, and how many wonderfully unpleasant errors can
 result from doing this incorrectly. It's a **lot** safer if arrays know
-how big they are._
+how big they are.*
 
 `array_merge` should then generate a single sorted list (small to large) of the
 unique values (i.e., no duplicates) in `values`. Since we haven't yet
