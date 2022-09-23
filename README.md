@@ -1,4 +1,9 @@
-# Background <!-- omit in toc -->
+# C and programming with dynamic arrays <!-- omit in toc -->
+
+[![Mergesort tests](../../workflows/mergesort-gtest/badge.svg)](../../actions?query=workflow%3A"mergesort-gtest")
+[![Mergesort Valgrind](../../workflows/mergesort-test-valgrind/badge.svg)](../../actions?query=workflow%3A"mergesort-test-valgrind")
+[![Array merge tests](../../workflows/array-merge-gtest/badge.svg)](../../actions?query=workflow%3A"array-merge-gtest")
+[![Array merge Valgrind](../../workflows/array-merge-test-valgrind/badge.svg)](../../actions?query=workflow%3A"array-merge-test-valgrind")
 
 This lab is a collection of several C programming exercises with an
 emphasis on arrays, pointers, and memory management.
