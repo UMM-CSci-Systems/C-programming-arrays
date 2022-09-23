@@ -1,8 +1,14 @@
 name: mergesort-test-valgrind
 
-on: [push, pull_request]
-#    paths:
-#    - 'mergesort/**'
+# The `workflow_dispatch` lets us manually trigger this action
+# through the GitHub web interface. See
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+# for more details.
+on:
+  push:
+    paths:
+      - 'mergesort/**'
+  workflow_dispatch:
 
 jobs:
   build:

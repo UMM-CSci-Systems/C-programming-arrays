@@ -59,7 +59,7 @@ Groups often have off-by-one errors where they weren't allocating
 
 We have sometimes seen a subtle mistake where folks went through something like the following sequence of steps:
 
-1. Dynamically allocate an array that was potentially empty (because _n=0_): `int *a = calloc(n, sizeof(int));`.
+1. Dynamically allocate an array that was potentially empty (because *n=0*): `int *a = calloc(n, sizeof(int));`.
 2. Copy some data into that array using a loop that (correctly) did nothing if *n=0*.
 3. Access the first item in the array, which might not actually be there, e.g., `int i = a[0];`.
 4. Protect the remainder of the code (through an `if` or loop with appropriate bounds) so that the value taken from the array was never *used* if n=0.
