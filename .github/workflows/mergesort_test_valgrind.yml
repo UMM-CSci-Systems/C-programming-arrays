@@ -8,8 +8,8 @@ on:
   push:
     paths:
       - 'mergesort/**'
-      - '.github/workflows/mergesort-gtest.yaml'
-      - '.github/workflows/mergesort-test-valgrind.yaml'
+      - '.github/workflows/mergesort_gtest.yaml'
+      - '.github/workflows/mergesort_test_valgrind.yaml'
   workflow_dispatch:
 
 jobs:
