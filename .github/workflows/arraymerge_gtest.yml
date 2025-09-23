@@ -11,6 +11,7 @@ on:
     paths:
       - 'array_merge/**'
       - 'mergesort/mergesort.[ch]'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 jobs:
