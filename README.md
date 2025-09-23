@@ -99,7 +99,7 @@ the implementation of the function listed in `foo.h`.
 To compile the test code use the following:
 
 ```bash
-g++ -Wall -g -o foo_test foo.c foo_test.cpp -lgtest -pthread -std=c++0x
+g++ -Wall -g -o foo_test foo.c foo_test.cpp -lgtest -pthread -std=c++14
 ```
 
 *Notice that this uses `g++` instead of `gcc`.* This because the `gtest`
@@ -110,7 +110,8 @@ the executable, however, which can be *extremely* helpful when using
 tools like `valgrind` or the `gdb` debugger. If you don't include it,
 for example, then those tools won't be able to report accurate or useful
 line numbers or function names. The `-lgtest` tells the compiler to include
-the `gtest` library (that's the `-l` part) when generating the executable.
+the `gtest` library (that's the `-l` part) when generating the executable 
+`foo_test`, which you can run using `./foo_test`.
 
 ---
 
@@ -238,10 +239,10 @@ You can use references like `../mergesort/mergesort.h` or
 `../mergesort/mergesort.c` to access appropriate files in that part of
 the project, either in things like `#include` statements or
 in `gcc/g++` calls. The command in the GitHub Actions to compile
-the Array Merge tess, for example, is:
+the Array Merge tests, for example, is:
 
 ```text
-g++ -Wall -g -o array_merge_test ../mergesort/mergesort.c array_merge.c array_merge_test.cpp -lgtest -pthread -std=c++0x
+g++ -Wall -g -o array_merge_test ../mergesort/mergesort.c array_merge.c array_merge_test.cpp -lgtest -pthread -std=c++14
 ```
 
 Note that the `../mergesort/mergesort.c` in this command includes
@@ -258,6 +259,6 @@ That has two major implications:
 
 Be sure that:
 
-- [ ] You follow our instructions
+- [ ] You follow our instructions (especially about how we want you to be using `malloc` or `calloc` instead of leveraging the dynamically allocated memory option)
 - [ ] Your canvas group matches your github classroom group
-- [ ] You submit your repository URL to canvas (if your canvas groups are set up correctly this will only need to be done once)
+- [ ] You submit your repository URL to canvas (if your canvas groups are set up correctly this will only need to be done by one team member)
